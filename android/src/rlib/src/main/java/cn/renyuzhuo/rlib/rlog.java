@@ -22,12 +22,13 @@ import javax.xml.transform.stream.StreamSource;
  */
 public class rlog {
 
-    private static final String TAG = "rlog";
-    private static final String TAG_INFO = TAG + ".i";
-    private static final String TAG_DEBUG = TAG + ".d";
-    private static final String TAG_WARN = TAG + ".w";
-    private static final String TAG_ERROR = TAG + ".e";
-    private static final int debugLever = DEBUG_LEVER.info;
+    private static String TAG = "rlog";
+    private static String TAG_INFO = TAG + ".i";
+    private static String TAG_DEBUG = TAG + ".d";
+    private static String TAG_WARN = TAG + ".w";
+    private static String TAG_ERROR = TAG + ".e";
+
+    private static int debugLever = DEBUG_LEVER.info;
 
     // Log.info
     public static void i(String tag, String message) {
@@ -73,6 +74,17 @@ public class rlog {
             case DEBUG_LEVER.info:
             case DEBUG_LEVER.debug: {
                 Log.d(TAG_DEBUG, message);
+            }
+        }
+    }
+
+    public static void d() {
+        switch (debugLever) {
+            case DEBUG_LEVER.info:
+            case DEBUG_LEVER.debug:
+            case DEBUG_LEVER.warn:
+            case DEBUG_LEVER.error: {
+                Log.d(TAG_DEBUG + "", "----------just space----------");
             }
         }
     }
@@ -272,4 +284,15 @@ public class rlog {
         int info = 0, debug = 1, warn = 2, error = 3, none = 7;
     }
 
+    public static void setTAG(String TAG) {
+        rlog.TAG = TAG;
+        TAG_INFO = TAG + ".i";
+        TAG_DEBUG = TAG + ".d";
+        TAG_WARN = TAG + ".w";
+        TAG_ERROR = TAG + ".e";
+    }
+
+    public static void setDebugLever(int debugLever) {
+        rlog.debugLever = debugLever;
+    }
 }
