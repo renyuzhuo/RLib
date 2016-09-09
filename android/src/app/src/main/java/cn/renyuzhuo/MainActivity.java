@@ -3,6 +3,7 @@ package cn.renyuzhuo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import cn.renyuzhuo.rlib.NumUtil;
 import cn.renyuzhuo.rlib.rlog;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,5 +33,7 @@ public class MainActivity extends AppCompatActivity {
         rlog.xml("<abc><t><tt>432</tt><tt>432433324</tt></t></abc>");
         rlog.objects(123, null, null);
 
+        rlog.d(NumUtil.getRandomNum());
+        rlog.d(NumUtil.getRandomNum(10));
     }
 }
