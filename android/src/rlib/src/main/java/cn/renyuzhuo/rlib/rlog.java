@@ -280,7 +280,7 @@ public class rlog {
         }
     }
 
-    private interface DEBUG_LEVER {
+    public interface DEBUG_LEVER {
         int info = 0, debug = 1, warn = 2, error = 3, none = 7;
     }
 
