@@ -35,5 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         rlog.d(NumUtil.getRandomNum());
         rlog.d(NumUtil.getRandomNum(10));
+
+        rlog.d(new String[]{});
+
     }
 }
