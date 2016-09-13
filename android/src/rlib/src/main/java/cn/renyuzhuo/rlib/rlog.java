@@ -28,13 +28,14 @@ public class rlog {
     private static String TAG_WARN = TAG + ".w";
     private static String TAG_ERROR = TAG + ".e";
 
-    private static int debugLever = DEBUG_LEVEL.info;
+    private static int debugLevel = DEBUG_LEVEL.info;
 
     // Log.info
     public static void i(String tag, String message) {
-        switch (debugLever) {
+        switch (debugLevel) {
             case DEBUG_LEVEL.info: {
                 Log.i(tag, message);
+                break;
             }
         }
     }
@@ -53,7 +54,7 @@ public class rlog {
 
     // Log.debug
     public static void d(String tag, String message) {
-        switch (debugLever) {
+        switch (debugLevel) {
             case DEBUG_LEVEL.info:
             case DEBUG_LEVEL.debug: {
                 Log.d(tag, message);
@@ -121,7 +122,7 @@ public class rlog {
 
     // warn
     public static void w(String tag, String message) {
-        switch (debugLever) {
+        switch (debugLevel) {
             case DEBUG_LEVEL.info:
             case DEBUG_LEVEL.debug:
             case DEBUG_LEVEL.warn: {
@@ -137,7 +138,7 @@ public class rlog {
 
     // error
     public static void e(String tag, String message) {
-        switch (debugLever) {
+        switch (debugLevel) {
             case DEBUG_LEVEL.info:
             case DEBUG_LEVEL.debug:
             case DEBUG_LEVEL.warn:
@@ -279,15 +280,15 @@ public class rlog {
         int info = 0, debug = 1, warn = 2, error = 3, none = 7;
     }
 
-    public static void setTAG(String TAG) {
-        rlog.TAG = TAG;
-        TAG_INFO = TAG + ".i";
-        TAG_DEBUG = TAG + ".d";
-        TAG_WARN = TAG + ".w";
-        TAG_ERROR = TAG + ".e";
+    public static void setTAG(String tag) {
+        TAG = tag;
+        TAG_INFO = tag + ".i";
+        TAG_DEBUG = tag + ".d";
+        TAG_WARN = tag + ".w";
+        TAG_ERROR = tag + ".e";
     }
 
-    public static void setDebugLever(int debugLever) {
-        rlog.debugLever = debugLever;
+    public static void setDebugLever(int level) {
+        debugLevel = level;
     }
 }
