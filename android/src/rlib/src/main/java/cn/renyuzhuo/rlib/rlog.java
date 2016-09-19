@@ -30,6 +30,10 @@ public class rlog {
 
     private static int debugLevel = DEBUG_LEVEL.info;
 
+    static {
+        setBeRandom(true);
+    }
+
     // Log.info
     public static void i(String tag, String message) {
         switch (debugLevel) {
@@ -286,6 +290,18 @@ public class rlog {
         TAG_DEBUG = tag + ".d";
         TAG_WARN = tag + ".w";
         TAG_ERROR = tag + ".e";
+    }
+
+    public static void setBeRandom(boolean isRandom) {
+        setBeRandom("rlog", isRandom);
+    }
+
+    public static void setBeRandom(String tag, boolean isRandom) {
+        if (isRandom) {
+            setTAG(tag + "." + NumUtil.getRandomNum(100));
+        } else {
+            setTAG(tag);
+        }
     }
 
     public static void setDebugLever(int level) {
