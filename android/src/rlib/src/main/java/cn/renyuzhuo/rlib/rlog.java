@@ -30,10 +30,6 @@ public class rlog {
 
     private static int debugLevel = DEBUG_LEVEL.info;
 
-    static {
-        setBeRandom(true);
-    }
-
     // Log.info
     public static void i(String tag, String message) {
         switch (debugLevel) {
