@@ -7,7 +7,7 @@
 #### 引用, [bintray](https://bintray.com/rwebrtc/maven/rlib?source=watch)
 
 ```
-compile 'cn.renyuzhuo.rlib:rlib:0.0.1'
+compile 'cn.renyuzhuo.rlib:rlib:0.0.2'
 ```
 
 ### LICENSE
