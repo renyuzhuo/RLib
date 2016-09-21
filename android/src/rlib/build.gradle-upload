@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.0.2"
+version = "0.0.1"
 def siteUrl = 'https://github.com/RWebRTC/rlib'
 def gitUrl = 'https://github.com/RWebRTC/rlib.git'
 group = "cn.renyuzhuo.rlib"
@@ -33,19 +33,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.1'
 }
 
-task alib(type: Copy, dependsOn: ['build']) {
-    from('build/intermediates/bundles/release/')
-    into('build/libs')
-    include('classes.jar')
-    rename('classes.jar', 'RALib.jar')
-}
-
 install {
     repositories.mavenInstaller {
         pom {
             project {
                 packaging 'aar'
                 name 'rlib'    //项目描述
+		        description 'A Simple Android Lib.'
                 url siteUrl
                 licenses {
                     license {
@@ -101,5 +95,11 @@ bintray {
         vcsUrl = gitUrl
         licenses = ["MIT"]
         publish = true
+	    version {
+            gpg {
+                sign = true
+                passphrase = properties.getProperty("bintray.gpg.password")
+            }
+        }
     }
 }
