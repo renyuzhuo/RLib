@@ -3,7 +3,7 @@ echo "get doc begin"
 git checkout gh-pages 
 rm -rf android-javadoc/
 cp -r ~/AndroidStudioProjects/Rlib/rlib/build/docs/javadoc/ android-javadoc
-git add .
+git add android-javadoc/*
 git status
 
 if [ "$1" =  "" ]; then 
