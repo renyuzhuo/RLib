@@ -6,4 +6,3 @@ cp rlib/build.gradle-alib rlib/build.gradle
 echo "make alib jar begin"
 ./gradlew alib
 echo "make alib jar finish"
-
