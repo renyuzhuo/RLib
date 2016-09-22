@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.0.3"
+version = "0.0.8"
 def siteUrl = 'https://github.com/RWebRTC/rlib'
 def gitUrl = 'https://github.com/RWebRTC/rlib.git'
 group = "cn.renyuzhuo.rlib"
@@ -37,14 +37,14 @@ install {
     repositories.mavenInstaller {
         pom {
             project {
-                packaging 'jar'
+                packaging 'aar'
                 name 'rlib'    //项目描述
 		        description 'A Simple Android Lib.'
                 url siteUrl
                 licenses {
                     license {
                         name 'MIT'
-                        url 'https://github.com/RWebRTC/rlib/LICENSE'
+                        url 'https://github.com/RWebRTC/rlib/blob/master/LICENSE'
                     }
                 }
                 developers {
