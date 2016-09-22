@@ -4,9 +4,9 @@
 
 ### [Android部分](https://goo.gl/VADWgF)
 
-```
-compile 'cn.renyuzhuo.rlib:rlib:0.0.3@aar3@aar3@aar'
-```
+#### How To Use
+
+[Here](https://bintray.com/rwebrtc/maven/rlib)
 
 ### LICENSE
 
