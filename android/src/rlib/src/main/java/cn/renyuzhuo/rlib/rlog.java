@@ -18,7 +18,15 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 /**
- * Created by renyuzhuo on 16-8-22.
+ * 日志输出工具类
+ * <p>
+ * i()系列方法输出info信息
+ * <p>
+ * d()系列方法输出debug信息
+ * <p>
+ * w()系列方法输出warn信息
+ * <p>
+ * e()系列方法输出error信息
  */
 public class rlog {
 
@@ -155,6 +163,11 @@ public class rlog {
     // objects
     private static Object object;
 
+    /**
+     * 分别输出objects
+     *
+     * @param objects objects
+     */
     public static void objects(Object... objects) {
         if (objects == null || objects.length == 0) {
             d("---------------------------------------------------");
@@ -173,12 +186,19 @@ public class rlog {
         }
     }
 
-    // 以Debug级别输出json
+    /**
+     * 以Debug级别输出json
+     */
     public static void json(String json) {
         json(DEBUG_LEVEL.debug, json);
     }
 
-    // 以debug_level级别输出json
+    /**
+     * 以debug_level级别输出json
+     *
+     * @param debug_level 日志级别
+     * @param json        json字符串
+     */
     public static void json(int debug_level, String json) {
         if (json == null) {
             e("json == null");
@@ -228,12 +248,19 @@ public class rlog {
         }
     }
 
-    // 以debug级别输出xml
+    /**
+     * 以debug级别输出xml
+     */
     public static void xml(String xml) {
         xml(DEBUG_LEVEL.debug, xml);
     }
 
-    // 以debug_level级别输出xml
+    /**
+     * 以debug_level级别输出xml
+     *
+     * @param debug_level 日志级别
+     * @param xml         xml字符串
+     */
     public static void xml(int debug_level, String xml) {
         if (xml == null) {
             e("xml == null");
@@ -276,10 +303,37 @@ public class rlog {
         }
     }
 
+    /**
+     * 日志级别
+     */
     public interface DEBUG_LEVEL {
-        int info = 0, debug = 1, warn = 2, error = 3, none = 7;
+        /**
+         * info级别
+         */
+        int info = 0,
+        /**
+         * debug级别
+         */
+        debug = 1,
+        /**
+         * warn级别
+         */
+        warn = 2,
+        /**
+         * error级别
+         */
+        error = 3,
+        /**
+         * 不输出日志
+         */
+        none = 7;
     }
 
+    /**
+     * 设置日志输出tag
+     *
+     * @param tag TAG
+     */
     public static void setTAG(String tag) {
         TAG = tag;
         TAG_INFO = tag + ".i";
@@ -288,10 +342,21 @@ public class rlog {
         TAG_ERROR = tag + ".e";
     }
 
+    /**
+     * 设置是否添加日志随机后缀，添加后，每次应用打开时，日志tag添加随机数，用于区分
+     *
+     * @param isRandom 是否添加随机数后缀，默认不添加
+     */
     public static void setBeRandom(boolean isRandom) {
         setBeRandom("rlog", isRandom);
     }
 
+    /**
+     * 设置tag和是否添加随机数后缀
+     *
+     * @param tag      日志TAG
+     * @param isRandom 是否添加随机数后缀
+     */
     public static void setBeRandom(String tag, boolean isRandom) {
         if (isRandom) {
             setTAG(tag + "." + NumUtil.getRandomNum(100));
@@ -300,6 +365,11 @@ public class rlog {
         }
     }
 
+    /**
+     * 设置日志输出级别
+     *
+     * @param level 日志级别
+     */
     public static void setDebugLever(int level) {
         debugLevel = level;
     }

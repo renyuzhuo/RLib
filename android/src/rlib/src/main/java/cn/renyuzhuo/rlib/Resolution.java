@@ -4,8 +4,7 @@ import android.content.Context;
 import android.util.TypedValue;
 
 /**
- * Created by renyuzhuo on 16-9-21.
- * 单位转换库
+ * 单位转换
  */
 public class Resolution {
 
