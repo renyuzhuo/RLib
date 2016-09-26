@@ -1,17 +1,12 @@
 package cn.renyuzhuo.test;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ActionBarOverlayLayout;
-import android.support.v7.widget.ButtonBarLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import cn.renyuzhuo.R;
-import cn.renyuzhuo.rlib.rlog;
-import cn.renyuzhuo.rlib.views.GifView;
-
-import static android.support.v7.appcompat.R.id.time;
+import cn.renyuzhuo.rlib.widget.GifView;
 
 public class TestGifView extends AppCompatActivity implements View.OnClickListener {
 

@@ -1,4 +1,4 @@
-package cn.renyuzhuo.rlib.views;
+package cn.renyuzhuo.rlib.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
