@@ -14,7 +14,7 @@ compile 'cn.renyuzhuo.rlib:rlib:0.0.10@aar'
 
 #### Docs
 
-参见[这里](http://rlib.renyuzhuo.cn/android-javadoc/)
+使用文档，参见[这里](http://rlib.renyuzhuo.cn/android-javadoc/)。
 
 ### LICENSE
 
