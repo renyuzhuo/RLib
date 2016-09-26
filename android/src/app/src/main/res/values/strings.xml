@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Rlib</string>
+    <string name="play">暂停或播放</string>
 </resources>
