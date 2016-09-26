@@ -5,8 +5,8 @@ import android.os.Environment;
 import java.io.File;
 
 /**
- * Created by renyuzhuo on 16-8-29.
- * <p/>
+ * 文件系统相关
+ * <p>
  * 权限:{@code <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />}
  */
 public class FileSystemUtil {
@@ -24,10 +24,22 @@ public class FileSystemUtil {
         return sdCardPath;
     }
 
+    /**
+     * 获取SD卡文件路径
+     *
+     * @param fileName 文件名
+     * @return 文件对象
+     */
     public static File getSDCardFile(String fileName) {
         return getFileByUrl(getSDCardPath() + "/" + fileName);
     }
 
+    /**
+     * 通过文件路径获取文件
+     *
+     * @param fileUrl 文件路径
+     * @return 文件对象
+     */
     public static File getFileByUrl(String fileUrl) {
         rlog.d(TAG, "fileUrl:" + fileUrl);
         return new File(fileUrl);
