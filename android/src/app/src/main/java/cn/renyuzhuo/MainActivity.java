@@ -12,8 +12,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rlog.setDebugLever(rlog.DEBUG_LEVEL.debug);
-//        rlog.i("afdsdsds");
-
+        rlog.setDebugLever(rlog.DEBUG_LEVEL.info);
     }
 }
