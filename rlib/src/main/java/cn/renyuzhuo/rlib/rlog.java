@@ -36,7 +36,7 @@ public class rlog {
     private static String TAG_WARN = TAG + ".w";
     private static String TAG_ERROR = TAG + ".e";
 
-    private static int debugLevel = DEBUG_LEVEL.info;
+    private static int debugLevel = DEBUG_LEVEL.debug;
 
     // Log.info
     public static void i(String tag, String message) {
@@ -74,8 +74,39 @@ public class rlog {
         d(TAG_DEBUG, message);
     }
 
+    /**
+     * 输出空行------
+     */
     public static void d() {
-        d("----------just space----------");
+        d("------------------------------");
+    }
+
+    /**
+     * debug级别语句块开始
+     */
+    private static void dbegin(String s) {
+        d("↓↓↓↓↓" + s + "↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+    }
+
+    /**
+     * debug级别语句块开始
+     */
+    public static void dbegin() {
+        d("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+    }
+
+    /**
+     * debug级别语句块结束
+     */
+    private static void dend(String s) {
+        d("↑↑↑↑↑" + s + "↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑");
+    }
+
+    /**
+     * debug级别语句块结束
+     */
+    public static void dend() {
+        d("↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑");
     }
 
     public static void d(char c) {
@@ -160,6 +191,34 @@ public class rlog {
         e(TAG_ERROR, message);
     }
 
+    /**
+     * 错误语句块开始
+     */
+    private static void ebegin(String s) {
+        e("↓↓↓↓↓" + s + "↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+    }
+
+    /**
+     * 错误语句快开始
+     */
+    public static void ebegin() {
+        e("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+    }
+
+    /**
+     * 错误语句块结束
+     */
+    private static void eend(String s) {
+        e("↑↑↑↑↑" + s + "↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑");
+    }
+
+    /**
+     * 错误语句块结束
+     */
+    public static void eend() {
+        e("↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑");
+    }
+
     // objects
     private static Object object;
 
@@ -170,10 +229,10 @@ public class rlog {
      */
     public static void objects(Object... objects) {
         if (objects == null || objects.length == 0) {
-            d("---------------------------------------------------");
+            d();
             return;
         } else {
-            d("--------------------Objects begin------------------");
+            dbegin("Objects begin");
             for (int i = 0; i < objects.length; i++) {
                 object = objects[i];
                 if (object == null) {
@@ -182,7 +241,7 @@ public class rlog {
                     d("args[" + i + "] == " + String.valueOf(object));
                 }
             }
-            d("--------------------Objects end--------------------");
+            dend("Objects end");
         }
     }
 
