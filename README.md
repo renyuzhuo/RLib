@@ -7,7 +7,7 @@ rlib是一个类库，用于个人积累，也用于对自己曾经写过的代�
 #### 引用方法
 
 ```
-compile 'cn.renyuzhuo.rlib:rlib:0.0.10@aar'
+compile 'cn.renyuzhuo.rlib:rlib:0.0.12@aar'
 ```
 
 更多版本参见[这里](https://bintray.com/rwebrtc/maven/rlib)。
@@ -18,4 +18,4 @@ compile 'cn.renyuzhuo.rlib:rlib:0.0.10@aar'
 
 ### LICENSE
 
-[MIT](./LICENSE)
+[MIT](https://github.com/RWebRTC/rlib/blob/master/LICENSE)
