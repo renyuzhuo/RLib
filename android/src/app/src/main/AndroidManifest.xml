@@ -18,7 +18,12 @@
         </activity>
         <activity android:name=".test.TestGifView" />
         <activity android:name=".test.TestRlog" />
-        <activity android:name=".test.UncaughtActivity">
+        <activity
+            android:name=".test.UncaughtActivity"
+            android:label="UncaughtActivity"></activity>
+        <activity
+            android:name=".test.MarkDownTestActivity"
+            android:label="MarkDownTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
