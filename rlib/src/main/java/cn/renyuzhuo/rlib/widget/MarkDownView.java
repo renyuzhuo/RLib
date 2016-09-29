@@ -28,7 +28,9 @@ import java.util.Set;
  * <br/>
  * Email: rwebrtc@gmail.com
  * <br/>
- * Reference: https://github.com/falnatsheh/MarkdownView
+ * From: https://github.com/falnatsheh/MarkdownView
+ * <p>
+ * MarkDown显示
  */
 public class MarkDownView extends WebView {
     public MarkDownView(Context context) {
