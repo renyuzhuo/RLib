@@ -7,6 +7,7 @@ import android.app.Application;
  * <br/>
  * Email: rwebrtc@gmail.com
  * <br/>
+ * 基本Application，添加非捕捉异常格式化输出
  */
 public class BaseApplication extends Application {
 
