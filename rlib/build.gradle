@@ -1,23 +1,29 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+version = "0.0.14"
+def siteUrl = 'http://rlib.renyuzhuo.cn'
+def gitUrl = 'https://github.com/RWebRTC/rlib.git'
+group = "cn.renyuzhuo.rlib"
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
+    resourcePrefix "rlib"
 
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName version
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    lintOptions {
-        abortOnError false
     }
 }
 
@@ -28,9 +34,73 @@ dependencies {
     compile 'org.markdownj:markdownj-core:0.4'
 }
 
-task alib(type: Copy, dependsOn: ['build']) {
-    from( 'build/intermediates/bundles/release/')
-    into( 'build/libs')
-    include('classes.jar')
-    rename('classes.jar', 'RALib.jar')
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'rlib'    //项目描述
+		        description 'A Simple Android Lib.'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'MIT'
+                        url 'https://github.com/RWebRTC/rlib/blob/master/LICENSE'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'RWebRTC'        //填写的一些基本信息
+                        name 'rwebrtc'
+                        email 'rwebrtc@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding = "utf-8"
+    options.charSet = "utf-8"
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "rlib"    //发布到JCenter上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["MIT"]
+        publish = true
+	    version {
+            gpg {
+                sign = true
+                passphrase = properties.getProperty("bintray.gpg.password")
+            }
+        }
+    }
 }
