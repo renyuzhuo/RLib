@@ -13,7 +13,7 @@ import cn.renyuzhuo.rlib.R;
 import cn.renyuzhuo.rlib.Time;
 
 /**
- * 使用Movie播放Gif动画，根据屏幕长宽，进行适当缩放，现实在屏幕中间
+ * 使用Movie播放Gif动画，根据屏幕长宽，进行适当缩放，显示在屏幕中间
  * <p>
  * From: https://github.com/Cutta/GifView
  */
