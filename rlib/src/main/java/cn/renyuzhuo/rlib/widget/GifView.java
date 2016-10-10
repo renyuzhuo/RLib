@@ -13,8 +13,7 @@ import cn.renyuzhuo.rlib.R;
 import cn.renyuzhuo.rlib.Time;
 
 /**
- * Created by Cuneyt on 4.10.2015.
- * Gifview
+ * 使用Movie播放Gif动画，根据屏幕长宽，进行适当缩放，现实在屏幕中间
  * <p>
  * From: https://github.com/Cutta/GifView
  */
@@ -100,6 +99,7 @@ public class GifView extends View {
      */
     public void setGifResource(int movieResourceId) {
         this.mMovieResourceId = movieResourceId;
+        // 将GIF动画以文件流的形式转换成Movie
         movie = Movie.decodeStream(getResources().openRawResource(mMovieResourceId));
         requestLayout();
     }
@@ -126,6 +126,7 @@ public class GifView extends View {
              */
             mMovieStart = android.os.SystemClock.uptimeMillis() - mCurrentAnimationTime;
 
+            // 刷新当前View
             invalidate();
         }
     }
