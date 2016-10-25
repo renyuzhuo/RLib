@@ -3,6 +3,8 @@ package cn.renyuzhuo.rlib;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import cn.renyuzhuo.rlog.rlog;
+
 /**
  * Created by renyuzhuo on 16-9-27.
  * <br/>

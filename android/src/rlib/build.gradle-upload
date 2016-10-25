@@ -3,7 +3,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.0.14"
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+version = properties.getProperty("libversion")
 def siteUrl = 'http://rlib.renyuzhuo.cn'
 def gitUrl = 'https://github.com/RWebRTC/rlib.git'
 group = "cn.renyuzhuo.rlib"
@@ -32,6 +35,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'org.markdownj:markdownj-core:0.4'
+    compile 'com.google.code.gson:gson:2.5'
+    compile project(':rlog')
 }
 
 install {
@@ -83,8 +88,7 @@ artifacts {
     archives javadocJar
     archives sourcesJar
 }
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
