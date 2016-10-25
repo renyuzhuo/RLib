@@ -51,9 +51,6 @@ public class ScreenUtil {
 
     /**
      * 获取屏幕宽度和高度
-     *
-     * @param context
-     * @return
      */
     public static int[] getScreenWidthHeight(Context context) {
         if (widthHeight != null) {

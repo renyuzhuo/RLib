@@ -1,1 +1,1 @@
-include ':app', ':rlib'
+include ':app', ':rlib', ':rlog'

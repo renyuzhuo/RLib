@@ -26,9 +26,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'org.markdownj:markdownj-core:0.4'
+    compile 'com.google.code.gson:gson:2.5'
+    compile project(':rlog')
 }
 
-task alib(type: Copy, dependsOn: ['build']) {
+task rlib(type: Copy, dependsOn: ['build']) {
     from( 'build/intermediates/bundles/release/')
     into( 'build/libs')
     include('classes.jar')

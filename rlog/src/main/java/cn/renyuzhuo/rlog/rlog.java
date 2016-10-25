@@ -1,4 +1,4 @@
-package cn.renyuzhuo.rlib;
+package cn.renyuzhuo.rlog;
 
 import android.util.Log;
 
@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.Random;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
@@ -418,7 +419,7 @@ public class rlog {
      */
     public static void setBeRandom(String tag, boolean isRandom) {
         if (isRandom) {
-            setTAG(tag + "." + NumUtil.getRandomNum(100));
+            setTAG(tag + "." + new Random().nextInt(1000));
         } else {
             setTAG(tag);
         }
