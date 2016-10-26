@@ -27,12 +27,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'org.markdownj:markdownj-core:0.4'
     compile 'com.google.code.gson:gson:2.5'
-    compile project(':rlog')
+    compile 'cn.renyuzhuo.rlog:rlog:0.0.17'
 }
 
 task rlib(type: Copy, dependsOn: ['build']) {
     from( 'build/intermediates/bundles/release/')
     into( 'build/libs')
     include('classes.jar')
-    rename('classes.jar', 'RALib.jar')
+    rename('classes.jar', 'RLib.jar')
 }
