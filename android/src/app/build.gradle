@@ -20,5 +20,4 @@ android {
 }
 
 dependencies {
-    compile 'cn.renyuzhuo.rlog:rlog:0.1.0'
 }
