@@ -6,8 +6,8 @@ apply plugin: 'com.jfrog.bintray'
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-version = properties.getProperty("libversion")
-def siteUrl = 'http://rlib.renyuzhuo.cn'
+version = "0.0.17"
+def siteUrl = 'http://renyuzhuo.cn/rlib'
 def gitUrl = 'https://github.com/RWebRTC/rlib.git'
 group = "cn.renyuzhuo.rlib"
 
@@ -28,15 +28,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'org.markdownj:markdownj-core:0.4'
-    compile 'com.google.code.gson:gson:2.5'
-    compile 'cn.renyuzhuo.rlog:rlog:0.0.17'
+}
+
+task rlib(type: Copy, dependsOn: ['build']) {
+    from( 'build/intermediates/bundles/release/')
+    into( 'build/libs')
+    include('classes.jar')
+    rename('classes.jar', 'RLib.jar')
 }
 
 install {
@@ -45,12 +49,12 @@ install {
             project {
                 packaging 'aar'
                 name 'rlib'    //项目描述
-		        description 'A Simple Android Lib.'
+                description 'A Simple Android Lib.'
                 url siteUrl
                 licenses {
                     license {
                         name 'MIT'
-                        url 'https://github.com/RWebRTC/rlib/blob/master/LICENSE'
+                        url 'http://renyuzhuo.cn/#/issues/37'
                     }
                 }
                 developers {
@@ -100,7 +104,7 @@ bintray {
         vcsUrl = gitUrl
         licenses = ["MIT"]
         publish = true
-	    version {
+        version {
             gpg {
                 sign = true
                 passphrase = properties.getProperty("bintray.gpg.password")

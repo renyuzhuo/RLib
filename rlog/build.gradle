@@ -6,16 +6,16 @@ apply plugin: 'com.jfrog.bintray'
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-version = properties.getProperty("libversion")
+version = "0.0.18"
 
-def siteUrl = 'http://renyuzhuo.cn'
-def gitUrl = 'https://github.com/RWebRTC'
+def siteUrl = 'http://renyuzhuo.cn/rlib'
+def gitUrl = 'https://github.com/RWebRTC/rlib.git'
 group = "cn.renyuzhuo.rlog"
 
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
-    resourcePrefix "rlib"
+    resourcePrefix "rlog"
 
     defaultConfig {
         minSdkVersion 1
@@ -29,9 +29,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
+}
+
+task rlog(type: Copy, dependsOn: ['build']) {
+    from( 'build/intermediates/bundles/release/')
+    into( 'build/libs')
+    include('classes.jar')
+    rename('classes.jar', 'RLog.jar')
 }
 
 install {
@@ -40,12 +50,12 @@ install {
             project {
                 packaging 'aar'
                 name 'rlog'    //项目描述
-		        description 'RLog'
+                description 'RLog'
                 url siteUrl
                 licenses {
                     license {
                         name 'MIT'
-                        url 'https://github.com/RWebRTC/rlib/blob/master/LICENSE'
+                        url 'http://renyuzhuo.cn/#/issues/37'
                     }
                 }
                 developers {
@@ -95,7 +105,7 @@ bintray {
         vcsUrl = gitUrl
         licenses = ["MIT"]
         publish = true
-	    version {
+        version {
             gpg {
                 sign = true
                 passphrase = properties.getProperty("bintray.gpg.password")

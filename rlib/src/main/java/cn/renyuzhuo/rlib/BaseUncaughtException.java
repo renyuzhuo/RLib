@@ -1,9 +1,9 @@
 package cn.renyuzhuo.rlib;
 
+import android.util.Log;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import cn.renyuzhuo.rlog.rlog;
 
 /**
  * Created by renyuzhuo on 16-9-27.
@@ -26,7 +26,6 @@ public class BaseUncaughtException implements Thread.UncaughtExceptionHandler {
      * 未捕捉异常捕捉构造器
      */
     public BaseUncaughtException() {
-        rlog.i("设置BaseUncaughtException()");
     }
 
     /**
@@ -53,8 +52,6 @@ public class BaseUncaughtException implements Thread.UncaughtExceptionHandler {
      * @param info
      */
     void printInfo(String info) {
-        rlog.ebegin();
-        rlog.e(info);
-        rlog.eend();
+        Log.d("rlog", info);
     }
 }
