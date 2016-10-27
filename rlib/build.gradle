@@ -49,7 +49,7 @@ install {
             project {
                 packaging 'aar'
                 name 'rlib'    //项目描述
-                description 'A Simple Android Lib.'
+                description 'RLib.'
                 url siteUrl
                 licenses {
                     license {

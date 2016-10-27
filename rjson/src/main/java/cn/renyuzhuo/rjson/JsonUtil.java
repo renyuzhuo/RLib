@@ -6,18 +6,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Iterator;
 
 /**
- * GSON封装程序
- * 来自互联网
+ * GSON封装程序，来自互联网
  * Created by RENYUZHUO on 2015/12/5.
+ * <p>
+ * 修改自我的老师谢琪老师开源项目内文件
  */
 public class JsonUtil {
     /**
@@ -40,36 +38,6 @@ public class JsonUtil {
      * </pre>
      */
     public static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
-
-    /**
-     * {@code Google Gson} "@Since" 注解常用的版本号常量 - {@code 1.0}
-     */
-    public static final double SINCE_VERSION_10 = 1.0d;
-
-    /**
-     * {@code Google Gson} 的 "@Since" 注解常用的版本号常量 - {@code 1.1}
-     */
-    public static final double SINCE_VERSION_11 = 1.1d;
-
-    /**
-     * {@code Google Gson} 的 "@Since" 注解常用的版本号常量 - {@code 1.2}
-     */
-    public static final double SINCE_VERSION_12 = 1.2d;
-
-    /**
-     * {@code Google Gson} 的 "@Until" 注解常用的版本号常量 - {@code 1.0}
-     */
-    public static final double UNTIL_VERSION_10 = SINCE_VERSION_10;
-
-    /**
-     * {@code Google Gson} 的 "@Until" 注解常用的版本号常量 - {@code 1.1}
-     */
-    public static final double UNTIL_VERSION_11 = SINCE_VERSION_11;
-
-    /**
-     * {@code Google Gson} 的 "@Until" 注解常用的版本号常量 - {@code 1.2}
-     */
-    public static final double UNTIL_VERSION_12 = SINCE_VERSION_12;
 
     /**
      * <p>
@@ -113,13 +81,12 @@ public class JsonUtil {
      * @param targetType 目标对象的类型。
      * @param builder    可定制的{@code Gson} 构建器。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.1
      */
     public static String toJson(Object target, Type targetType,
                                 GsonBuilder builder) {
         if (target == null)
             return EMPTY_JSON;
-        Gson gson = null;
+        Gson gson;
         if (builder == null) {
             gson = new Gson();
         } else {
@@ -168,7 +135,6 @@ public class JsonUtil {
      * @param datePattern                 日期字段的格式化模式。
      * @param excludesFieldsWithoutExpose 是否排除未标注 {@literal @Expose} 注解的字段。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target, Type targetType,
                                 boolean isSerializeNulls, Double version, String datePattern,
@@ -200,7 +166,6 @@ public class JsonUtil {
      *
      * @param target 要转换成 {@code JSON} 的目标对象。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target) {
         return toJson(target, null, false, null, null, true);
@@ -218,7 +183,6 @@ public class JsonUtil {
      * @param target      要转换成 {@code JSON} 的目标对象。
      * @param datePattern 日期字段的格式化模式。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target, String datePattern) {
         return toJson(target, null, false, null, datePattern, true);
@@ -236,7 +200,6 @@ public class JsonUtil {
      * @param target  要转换成 {@code JSON} 的目标对象。
      * @param version 字段的版本号注解({@literal @Since})。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target, Double version) {
         return toJson(target, null, false, version, null, true);
@@ -254,7 +217,6 @@ public class JsonUtil {
      * @param target                      要转换成 {@code JSON} 的目标对象。
      * @param excludesFieldsWithoutExpose 是否排除未标注 {@literal @Expose} 注解的字段。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target,
                                 boolean excludesFieldsWithoutExpose) {
@@ -274,7 +236,6 @@ public class JsonUtil {
      * @param version                     字段的版本号注解({@literal @Since})。
      * @param excludesFieldsWithoutExpose 是否排除未标注 {@literal @Expose} 注解的字段。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target, Double version,
                                 boolean excludesFieldsWithoutExpose) {
@@ -294,7 +255,6 @@ public class JsonUtil {
      * @param target     要转换成 {@code JSON} 的目标对象。
      * @param targetType 目标对象的类型。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target, Type targetType) {
         return toJson(target, targetType, false, null, null, true);
@@ -312,7 +272,6 @@ public class JsonUtil {
      * @param targetType 目标对象的类型。
      * @param version    字段的版本号注解({@literal @Since})。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target, Type targetType, Double version) {
         return toJson(target, targetType, false, version, null, true);
@@ -330,7 +289,6 @@ public class JsonUtil {
      * @param targetType                  目标对象的类型。
      * @param excludesFieldsWithoutExpose 是否排除未标注 {@literal @Expose} 注解的字段。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target, Type targetType,
                                 boolean excludesFieldsWithoutExpose) {
@@ -350,7 +308,6 @@ public class JsonUtil {
      * @param version                     字段的版本号注解({@literal @Since})。
      * @param excludesFieldsWithoutExpose 是否排除未标注 {@literal @Expose} 注解的字段。
      * @return 目标对象的 {@code JSON} 格式的字符串。
-     * @since 1.0
      */
     public static String toJson(Object target, Type targetType, Double version,
                                 boolean excludesFieldsWithoutExpose) {
@@ -366,7 +323,6 @@ public class JsonUtil {
      * @param token       {@code com.google.gson.reflect.TypeToken} 的类型指示类对象。
      * @param datePattern 日期格式模式。
      * @return 给定的 {@code JSON} 字符串表示的指定的类型对象。
-     * @since 1.0
      */
     public static <T> T fromJson(String json, TypeToken<T> token,
                                  String datePattern) {
@@ -395,7 +351,6 @@ public class JsonUtil {
      * @param json  给定的 {@code JSON} 字符串。
      * @param token {@code com.google.gson.reflect.TypeToken} 的类型指示类对象。
      * @return 给定的 {@code JSON} 字符串表示的指定的类型对象。
-     * @since 1.0
      */
     public static <T> T fromJson(String json, TypeToken<T> token) {
         return fromJson(json, token, null);
@@ -410,7 +365,6 @@ public class JsonUtil {
      * @param clazz       要转换的目标类。
      * @param datePattern 日期格式模式。
      * @return 给定的 {@code JSON} 字符串表示的指定的类型对象。
-     * @since 1.0
      */
     public static <T> T fromJson(String json, Class<T> clazz, String datePattern) {
         if (isBlank(json)) {
@@ -440,7 +394,6 @@ public class JsonUtil {
      * @param json  给定的 {@code JSON} 字符串。
      * @param clazz 要转换的目标类。
      * @return 给定的 {@code JSON} 字符串表示的指定的类型对象。
-     * @since 1.0
      */
     public static <T> T fromJson(String json, Class<T> clazz) {
         return fromJson(json, clazz, null);
@@ -448,23 +401,9 @@ public class JsonUtil {
 
     /**
      * 判断字符串是否为空
-     *
-     * @param text
-     * @return
      */
     private static boolean isBlank(String text) {
         return null == text || "".equals(text.trim());
-    }
-
-    public static JSONObject transFormObjectToJsonObject(Object o) {
-        Gson gson = new Gson();
-        JSONObject obj = null;
-        try {
-            obj = new JSONObject(gson.toJson(o));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return obj;
     }
 
 }

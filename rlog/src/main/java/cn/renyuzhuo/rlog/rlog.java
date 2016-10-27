@@ -284,6 +284,10 @@ public class rlog {
         } catch (JSONException e) {
             e("json err:" + json);
         }
+        if (logString == null) {
+            e("json -> null. Json formate err.");
+            return;
+        }
 
         switch (debug_level) {
             case DEBUG_LEVEL.info: {
