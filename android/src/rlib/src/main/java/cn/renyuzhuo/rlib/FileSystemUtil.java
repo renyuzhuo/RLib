@@ -4,8 +4,6 @@ import android.os.Environment;
 
 import java.io.File;
 
-import cn.renyuzhuo.rlog.rlog;
-
 /**
  * 文件系统相关
  * <p>
@@ -22,7 +20,6 @@ public class FileSystemUtil {
      */
     public static String getSDCardPath() {
         String sdCardPath = Environment.getExternalStorageDirectory().getPath();
-        rlog.d(TAG, "sdCardPath:" + sdCardPath);
         return sdCardPath;
     }
 
@@ -43,7 +40,6 @@ public class FileSystemUtil {
      * @return 文件对象
      */
     public static File getFileByUrl(String fileUrl) {
-        rlog.d(TAG, "fileUrl:" + fileUrl);
         return new File(fileUrl);
     }
 }

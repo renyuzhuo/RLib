@@ -1,10 +1,32 @@
 #!/usr/bin/env bash
 echo "java8"
-echo "cp build.gradle-lib to build.gradle"
-cp build.gradle-lib build.gradle
-cp rlib/build.gradle-rlib rlib/build.gradle
-cp rlog/build.gradle-rlog rlog/build.gradle
-echo "make alib jar begin"
-./gradlew rlib
-./gradlew rlog
+echo "update settings.gradle"
+case $1 in
+    [r][l][o][g])
+	    echo "rlog"
+	    echo "include ':app', ':rlog'" > settings.gradle
+	    ./gradlew rlog
+        ;;
+    [r][l][i][b])
+	    echo "rlib"
+	    echo "include ':app', ':rlib'" > settings.gradle
+	    ./gradlew rlib
+        ;;
+    [r][j][s][o][n])
+	    echo "rjson"
+	    echo "include ':app', ':rjson'" > settings.gradle
+	    ./gradlew rjson
+        ;;
+    [a][l][l])
+	    echo "rall"
+	    echo "include ':app', ':rlib', ':rlog', ':rjson'" > settings.gradle
+	    ./gradlew rlog
+	    ./gradlew rlib
+	    ./gradlew rjson
+        ;;
+    *)
+	    echo "rlog/rlib/rjson/all"
+	    exit 0
+        ;;
+esac
 echo "make alib jar finish"

@@ -1,14 +1,26 @@
 apply plugin: 'com.android.library'
 
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+version = "0.0.17"
+def siteUrl = 'http://renyuzhuo.cn/rlib'
+def gitUrl = 'https://github.com/RWebRTC/rlib.git'
+group = "cn.renyuzhuo.rlib"
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
+    resourcePrefix "rlib"
 
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName version
     }
     buildTypes {
         release {
@@ -22,12 +34,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'org.markdownj:markdownj-core:0.4'
-    compile 'com.google.code.gson:gson:2.5'
-    compile project(':rlog')
 }
 
 task rlib(type: Copy, dependsOn: ['build']) {
@@ -35,4 +41,74 @@ task rlib(type: Copy, dependsOn: ['build']) {
     into( 'build/libs')
     include('classes.jar')
     rename('classes.jar', 'RLib.jar')
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'rlib'    //项目描述
+                description 'RLib.'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'MIT'
+                        url 'http://renyuzhuo.cn/#/issues/37'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'RWebRTC'        //填写的一些基本信息
+                        name 'rwebrtc'
+                        email 'rwebrtc@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding = "utf-8"
+    options.charSet = "utf-8"
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "rlib"    //发布到JCenter上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["MIT"]
+        publish = true
+        version {
+            gpg {
+                sign = true
+                passphrase = properties.getProperty("bintray.gpg.password")
+            }
+        }
+    }
 }
