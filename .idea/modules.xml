@@ -5,9 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/Rlib.iml" filepath="$PROJECT_DIR$/Rlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/rautoupdate/rautoupdate.iml" filepath="$PROJECT_DIR$/rautoupdate/rautoupdate.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rjson/rjson.iml" filepath="$PROJECT_DIR$/rjson/rjson.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rlib/rlib.iml" filepath="$PROJECT_DIR$/rlib/rlib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rlog/rlog.iml" filepath="$PROJECT_DIR$/rlog/rlog.iml" />
     </modules>
   </component>
 </project>

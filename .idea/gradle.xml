@@ -10,9 +10,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/rautoupdate" />
-            <option value="$PROJECT_DIR$/rjson" />
-            <option value="$PROJECT_DIR$/rlib" />
-            <option value="$PROJECT_DIR$/rlog" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
