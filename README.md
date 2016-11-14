@@ -2,6 +2,6 @@
 
 rlib是一个类库，用于个人积累，也用于对自己曾经写过的代码进行优化，尽量精益求精，达到写出优秀代码。
 
-### 参考
+## LICENSE
 
-    http://renyuzhuo.cn/rlib
+[MIT](http://renyuzhuo.cn/MIT)

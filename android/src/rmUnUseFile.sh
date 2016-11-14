@@ -6,3 +6,4 @@ rm -rf app/build/
 rm -rf rlib/build
 rm -rf rlog/build
 rm -rf rjson/build
+rm -rf rautoupdate/build

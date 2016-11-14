@@ -6,9 +6,9 @@ apply plugin: 'com.jfrog.bintray'
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-version = "0.0.17"
-def siteUrl = 'http://renyuzhuo.cn/rlib'
-def gitUrl = 'https://github.com/RWebRTC/rlib.git'
+version = "0.0.18"
+def siteUrl = 'http://renyuzhuo.cn'
+def gitUrl = 'https://github.com/RWebRTC/Blog.git'
 group = "cn.renyuzhuo.rlib"
 
 android {
@@ -54,7 +54,7 @@ install {
                 licenses {
                     license {
                         name 'MIT'
-                        url 'http://renyuzhuo.cn/#/issues/37'
+                        url 'http://renyuzhuo.cn/MIT'
                     }
                 }
                 developers {

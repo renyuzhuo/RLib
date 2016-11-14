@@ -14,9 +14,13 @@ case $1 in
 	    echo "rjson"
 	    echo "include ':app', ':rjson'" > settings.gradle
         ;;
+    [r][a][u][t][o][u][p][d][a][t][e])
+        echo "rautoupdate"
+        echo "include ':app', ':rautoupdate'" > settings.gradle
+        ;;
     [a][l][l])
 	    echo "rall"
-	    echo "include ':app', ':rlib', ':rlog', ':rjson'" > settings.gradle
+	    echo "include ':app', ':rlib', ':rlog', ':rjson', ':rautoupdate'" > settings.gradle
         ;;
     *)
 	    echo "rlog/rlib/rjson/all"

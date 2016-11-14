@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.renyuzhuo.rautoupdate">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>
