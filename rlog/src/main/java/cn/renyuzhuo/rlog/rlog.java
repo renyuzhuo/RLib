@@ -63,6 +63,14 @@ public class rlog {
 
     // Log.debug
     public static void d(String tag, String message) {
+        if (message == null) {
+            d("message == null");
+            return;
+        }
+        if (message.length() == 0) {
+            d("message.length == 0");
+            return;
+        }
         switch (debugLevel) {
             case DEBUG_LEVEL.info:
             case DEBUG_LEVEL.debug: {

@@ -17,12 +17,18 @@ case $1 in
 	    echo "include ':app', ':rjson'" > settings.gradle
 	    ./gradlew rjson
         ;;
+    [r][a][u][t][o][u][p][d][a][t][e])
+        echo "rautoupdate"
+        echo "include ':app', ':rautoupdate'" > settings.gradle
+        ./gradlew rautoupdate
+        ;;
     [a][l][l])
 	    echo "rall"
-	    echo "include ':app', ':rlib', ':rlog', ':rjson'" > settings.gradle
+	    echo "include ':app', ':rlib', ':rlog', ':rjson', ':rautoupdate'" > settings.gradle
 	    ./gradlew rlog
 	    ./gradlew rlib
 	    ./gradlew rjson
+	    ./gradlew rautoupdate
         ;;
     *)
 	    echo "rlog/rlib/rjson/all"
