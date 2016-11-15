@@ -4,6 +4,7 @@ import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -19,5 +20,6 @@ public interface UpdateService {
     })
     @GET("/{username}/{repo}/{branch}/{file}")
     Observable<ResponseBody> ifNeedUpdate(@Path("username") String username,
-                                          @Path("repo") String repo, @Path("branch") String branch, @Path("file") String file);
+                                          @Path("repo") String repo, @Path("branch") String branch,
+                                          @Path("file") String file, @Query("timeStamp") String timeStamp);
 }

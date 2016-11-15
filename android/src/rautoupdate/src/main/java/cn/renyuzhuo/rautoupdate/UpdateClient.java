@@ -17,18 +17,22 @@ public class UpdateClient {
 
     public static void ifNeedUpdate(Context context, final UpdateClientListener updateClientListener,
                                     String username, String repo, String branch, String file) {
-        UpdateService updateService = GitHubContentBase.getInstance(context).build().create(UpdateService.class);
-        updateService.ifNeedUpdate(username, repo, branch, file)
+        final GitHubContentBase[] gitHubContentBase = {GitHubContentBase.getInstance(context)};
+        UpdateService updateService = gitHubContentBase[0].build().create(UpdateService.class);
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        updateService.ifNeedUpdate(username, repo, branch, file, timeStamp)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ResponseBody>() {
                     @Override
                     public void onCompleted() {
+                        gitHubContentBase[0] = null;
                         Log.d("UpdateClient", "onCompleted");
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        gitHubContentBase[0] = null;
                         Log.e("UpdateClient.onError", "NetWork ERR");
                         Log.e("UpdateClient", "↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
                         e.printStackTrace();
