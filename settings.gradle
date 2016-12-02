@@ -1,1 +1,1 @@
-include ':app', ':rlog'
+include ':app', ':rautoupdate'

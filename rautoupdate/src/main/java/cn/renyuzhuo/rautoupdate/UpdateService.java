@@ -5,6 +5,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import rx.Completable;
 import rx.Observable;
 
 /**
@@ -22,4 +23,13 @@ public interface UpdateService {
     Observable<ResponseBody> ifNeedUpdate(@Path("username") String username,
                                           @Path("repo") String repo, @Path("branch") String branch,
                                           @Path("file") String file, @Query("timeStamp") String timeStamp);
+
+    @Headers({
+            "Accept: text/html",
+            "User-Agent: RGitHub"
+    })
+    @GET("/u/{username}/p/{repo}/git/raw/{branch}/{file}")
+    Observable<ResponseBody> ifCodingNeedUpdate(@Path("username") String username,
+                                                @Path("repo") String repo, @Path("branch") String branch,
+                                                @Path("file") String file, @Query("timeStamp") String timeStamp);
 }

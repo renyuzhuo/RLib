@@ -48,4 +48,36 @@ public class UpdateClient {
                 });
     }
 
+    public static void ifCodingNeedUpdate(Context context, final UpdateClientListener updateClientListener,
+                                          String username, String repo, String branch, String file) {
+        final CodingContentBase[] codingContentBases = {CodingContentBase.getInstance(context)};
+        UpdateService updateService = codingContentBases[0].build().create(UpdateService.class);
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        updateService.ifCodingNeedUpdate(username, repo, branch, file, timeStamp)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ResponseBody>() {
+                    @Override
+                    public void onCompleted() {
+                        codingContentBases[0] = null;
+                        Log.d("UpdateClient", "onCompleted");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        codingContentBases[0] = null;
+                        Log.e("UpdateClient.onError", "NetWork ERR");
+                        Log.e("UpdateClient", "↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+                        e.printStackTrace();
+                        Log.e("UpdateClient", "↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑");
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        if (updateClientListener != null) {
+                            updateClientListener.onGetVersion(responseBody);
+                        }
+                    }
+                });
+    }
 }

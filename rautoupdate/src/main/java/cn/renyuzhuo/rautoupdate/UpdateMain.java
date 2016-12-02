@@ -46,6 +46,11 @@ public class UpdateMain implements UpdateClientListener {
         return false;
     }
 
+    public final boolean ifCodingNeedUpdate(String username, String repo, String branch, String file) {
+        UpdateClient.ifCodingNeedUpdate(context, this, username, repo, branch, file);
+        return false;
+    }
+
     @Override
     public void onGetVersion(ResponseBody responseBody) {
         try {
